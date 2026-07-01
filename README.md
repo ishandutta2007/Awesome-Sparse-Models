@@ -1,6 +1,12 @@
 # Awesome-Sparse-Models
 ![Awesome Sparse Models Banner](assets/banner.svg)
 
+<p align="center">
+<a href="https://github.com/ishandutta2007/Awesome-Awesome-Awesome"><img src="https://img.shields.io/badge/Awesome-%E2%9C%94-blueviolet?style=flat-square&logo=github" alt="Awesome"/></a><a href="https://discord.gg/jc4xtF58Ve"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" /></a>
+</p>
+
+> **Awesome Sparse Models** is a curated list of research papers, guides, and engineering tools for sparse neural networks, Mixture-of-Experts (MoE), structured & unstructured pruning (like 2:4 sparsity), sparse attention kernels, and mechanistic interpretability. Optimized for high-performance AI scale, consumer-device edge deployment, and memory-bandwidth efficiency.
+
 ## 🧠 Sparse Models in AI: History, Progression, Variants, & Applications
 
 A Sparse Model is an architectural paradigm in artificial intelligence designed to optimize computational efficiency, parameter storage, and memory bandwidth by enforcing sparsity across a network’s weights, activations, or routing pathways. In contrast to dense neural networks—where every parameter must be loaded and computed for every single data point—sparse models isolate and activate only a highly relevant subset of the parameter landscape per execution step. This approach transforms dense matrix operations into sparse tensor allocations, allowing specialized hardware compilers to bypass unnecessary zero-value floating-point operations (FLOPs). In the modern era of foundational AI, sparse modeling serves as a critical scaling engine, enabling networks to hold trillions of total parameters on disk while maintaining the inference speed and operational cost of a much smaller model.
