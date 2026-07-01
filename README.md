@@ -32,22 +32,22 @@ flowchart LR
 
 Sparse model configurations are strictly categorized based on whether the zero parameters are hardcoded permanently into the weights or dynamically gated at runtime.
 
-### A. Permanent Parameter Sparsity (Weight/Channel Pruning)
-*   **Mechanism:** Identifies and completely deletes non-essential weight connections, convolutional filters, or full multi-head attention blocks from the model graph [INDEX: 16]. 
-*   **Sub-Variants:**
-    1.  *Unstructured:* Random element-wise zero tracking [INDEX: 16].
-    2.  *Structured:* Row, column, or tensor-wide structural array dropping [INDEX: 16].
-    3.  *Semi-Structured (2:4):* For every 4 contiguous parameter blocks, exactly 2 must be compressed to zero, activating direct hardware-fused acceleration loops inside modern GPUs [INDEX: 16].
+-  ### A. Permanent Parameter Sparsity (Weight/Channel Pruning)
+    *   **Mechanism:** Identifies and completely deletes non-essential weight connections, convolutional filters, or full multi-head attention blocks from the model graph [INDEX: 16]. 
+    *   **Sub-Variants:**
+        1.  *Unstructured:* Random element-wise zero tracking [INDEX: 16].
+        2.  *Structured:* Row, column, or tensor-wide structural array dropping [INDEX: 16].
+        3.  *Semi-Structured (2:4):* For every 4 contiguous parameter blocks, exactly 2 must be compressed to zero, activating direct hardware-fused acceleration loops inside modern GPUs [INDEX: 16].
 
-### B. Conditional Compute Sparsity (Mixture-of-Experts - MoE)
-*   **Mechanism:** The network parameters are fully dense, but a dynamic gating network ($\text{Gating}(x) = \text{Softmax}(\text{TopK}(xW_g, k))$) evaluates each token, loading and executing only $k$ out of $N$ total experts per forward pass step.
-*   **Pros:** Exceptional for maximizing cross-entropy training loss scaling laws without scaling up real-world inference latency boundaries [INDEX: 15].
+-  ### B. Conditional Compute Sparsity (Mixture-of-Experts - MoE)
+    *   **Mechanism:** The network parameters are fully dense, but a dynamic gating network ($\text{Gating}(x) = \text{Softmax}(\text{TopK}(xW_g, k))$) evaluates each token, loading and executing only $k$ out of $N$ total experts per forward pass step.
+    *   **Pros:** Exceptional for maximizing cross-entropy training loss scaling laws without scaling up real-world inference latency boundaries [INDEX: 15].
 
-### C. Dense-Sparse Attention Kernels
-*   **Mechanism:** Overrides the standard attention projection matrix. Instead of calculating a full quadratic ($O(N^2)$) cross-token matrix, it enforces structural geometric constraints—such as local sliding windows [INDEX: 20] or periodic strided blocks [INDEX: 20]—masking out non-adjacent indices.
+-  ### C. Dense-Sparse Attention Kernels
+    *   **Mechanism:** Overrides the standard attention projection matrix. Instead of calculating a full quadratic ($O(N^2)$) cross-token matrix, it enforces structural geometric constraints—such as local sliding windows [INDEX: 20] or periodic strided blocks [INDEX: 20]—masking out non-adjacent indices.
 
-### D. Overcomplete Dictionary SAEs (Mechanistic Interpretability)
-*   **Mechanism:** Autoencoders designed with an overcomplete hidden bottleneck layer that is significantly *larger* than the input layer [INDEX: 2]. By applying strict Top-K or JumpReLU activation sorting steps, it keeps the vast majority of hidden neurons inactive, unwrapping compressed vector distributions into clear, human-auditable concept features [INDEX: 2].
+-  ### D. Overcomplete Dictionary SAEs (Mechanistic Interpretability)
+    *   **Mechanism:** Autoencoders designed with an overcomplete hidden bottleneck layer that is significantly *larger* than the input layer [INDEX: 2]. By applying strict Top-K or JumpReLU activation sorting steps, it keeps the vast majority of hidden neurons inactive, unwrapping compressed vector distributions into clear, human-auditable concept features [INDEX: 2].
 
 ---
 
