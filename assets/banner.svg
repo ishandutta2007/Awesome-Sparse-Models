@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a051b" />
+      <stop offset="50%" stop-color="#0f0c24" />
+      <stop offset="100%" stop-color="#05020c" />
+    </linearGradient>
+    
+    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8a2be2" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#00ffff" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#32cd32" stop-opacity="0.8" />
+    </linearGradient>
+
+    <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00ffff" stop-opacity="1" />
+      <stop offset="50%" stop-color="#00ffff" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#00ffff" stop-opacity="0" />
+    </radialGradient>
+    
+    <style>
+      .title {
+        font-family: 'Montserrat', 'Segoe UI', Roboto, sans-serif;
+        font-weight: 800;
+        fill: #ffffff;
+        font-size: 54px;
+        letter-spacing: 5px;
+      }
+      .subtitle {
+        font-family: 'Segoe UI', Roboto, sans-serif;
+        font-weight: 400;
+        fill: #a0aec0;
+        font-size: 20px;
+        letter-spacing: 2px;
+      }
+      .pulse-fast {
+        animation: pulse 2s infinite alternate;
+      }
+      .pulse-slow {
+        animation: pulse 4s infinite alternate;
+      }
+      .flow-line {
+        stroke-dasharray: 20 150;
+        animation: flow 8s linear infinite;
+      }
+      .flow-line-reverse {
+        stroke-dasharray: 30 120;
+        animation: flow-rev 6s linear infinite;
+      }
+      @keyframes pulse {
+        0% { r: 6px; opacity: 0.4; }
+        100% { r: 12px; opacity: 1; filter: drop-shadow(0 0 8px #00ffff); }
+      }
+      @keyframes flow {
+        from { stroke-dashoffset: 0; }
+        to { stroke-dashoffset: -340; }
+      }
+      @keyframes flow-rev {
+        from { stroke-dashoffset: 0; }
+        to { stroke-dashoffset: 300; }
+      }
+      .static-node {
+        fill: #3a3250;
+      }
+      .active-node {
+        fill: #00ffff;
+      }
+      .active-node-purple {
+        fill: #c71585;
+      }
+      .active-node-green {
+        fill: #32cd32;
+      }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="400" fill="url(#bgGrad)" />
+
+  <!-- Neural Network Connections (Sparsity Visualized) -->
+  <g opacity="0.35">
+    <!-- Inactive Paths (Sparse Network Base) -->
+    <line x1="100" y1="100" x2="250" y2="150" stroke="#1f1a3a" stroke-width="1.5" />
+    <line x1="100" y1="200" x2="250" y2="150" stroke="#1f1a3a" stroke-width="1.5" />
+    <line x1="100" y1="300" x2="250" y2="250" stroke="#1f1a3a" stroke-width="1.5" />
+    <line x1="250" y1="150" x2="450" y2="80" stroke="#1f1a3a" stroke-width="1.5" />
+    <line x1="250" y1="150" x2="450" y2="200" stroke="#1f1a3a" stroke-width="1.5" />
+    <line x1="250" y1="250" x2="450" y2="200" stroke="#1f1a3a" stroke-width="1.5" />
+    <line x1="250" y1="250" x2="450" y2="320" stroke="#1f1a3a" stroke-width="1.5" />
+    
+    <line x1="450" y1="80" x2="650" y2="150" stroke="#1f1a3a" stroke-width="1.5" />
+    <line x1="450" y1="200" x2="650" y2="150" stroke="#1f1a3a" stroke-width="1.5" />
+    <line x1="450" y1="200" x2="650" y2="250" stroke="#1f1a3a" stroke-width="1.5" />
+    
+    <line x1="650" y1="150" x2="850" y2="100" stroke="#1f1a3a" stroke-width="1.5" />
+    <line x1="650" y1="250" x2="850" y2="220" stroke="#1f1a3a" stroke-width="1.5" />
+    <line x1="650" y1="250" x2="850" y2="320" stroke="#1f1a3a" stroke-width="1.5" />
+    
+    <!-- Active Paths (Glowing Sparse Routing) -->
+    <line x1="100" y1="200" x2="250" y2="150" stroke="url(#glowGrad)" stroke-width="3" />
+    <line x1="250" y1="150" x2="450" y2="80" stroke="url(#glowGrad)" stroke-width="3" />
+    <line x1="450" y1="80" x2="650" y2="150" stroke="url(#glowGrad)" stroke-width="3" />
+    <line x1="650" y1="150" x2="850" y2="220" stroke="url(#glowGrad)" stroke-width="3" />
+    
+    <!-- Moving Signal Pulses (Dynamic SMIL/CSS flow) -->
+    <line x1="100" y1="200" x2="250" y2="150" stroke="#00ffff" stroke-width="3" class="flow-line" />
+    <line x1="250" y1="150" x2="450" y2="80" stroke="#8a2be2" stroke-width="3" class="flow-line" />
+    <line x1="450" y1="80" x2="650" y2="150" stroke="#32cd32" stroke-width="3" class="flow-line-reverse" />
+    <line x1="650" y1="150" x2="850" y2="220" stroke="#00ffff" stroke-width="3" class="flow-line" />
+  </g>
+
+  <!-- Network Nodes -->
+  <!-- Layer 1 -->
+  <circle cx="100" cy="100" r="5" class="static-node" />
+  <circle cx="100" cy="200" r="8" class="active-node pulse-fast" />
+  <circle cx="100" cy="300" r="5" class="static-node" />
+  
+  <!-- Layer 2 -->
+  <circle cx="250" cy="150" r="8" class="active-node pulse-slow" />
+  <circle cx="250" cy="250" r="5" class="static-node" />
+  
+  <!-- Layer 3 (Experts) -->
+  <circle cx="450" cy="80" r="9" class="active-node-purple pulse-fast" />
+  <circle cx="450" cy="200" r="5" class="static-node" />
+  <circle cx="450" cy="320" r="5" class="static-node" />
+  
+  <!-- Layer 4 -->
+  <circle cx="650" cy="150" r="8" class="active-node-green pulse-slow" />
+  <circle cx="650" cy="250" r="5" class="static-node" />
+
+  <!-- Layer 5 (Output) -->
+  <circle cx="850" cy="100" r="5" class="static-node" />
+  <circle cx="850" cy="220" r="8" class="active-node pulse-fast" />
+  <circle cx="850" cy="320" r="5" class="static-node" />
+
+  <!-- Title & Branding -->
+  <text x="50%" y="42%" text-anchor="middle" class="title">AWESOME SPARSE MODELS</text>
+  <text x="50%" y="60%" text-anchor="middle" class="subtitle">⚡ Architectural Sparsity • Mixture-of-Experts • Hardware Co-Design ⚡</text>
+  
+</svg>

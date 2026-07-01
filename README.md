@@ -1,11 +1,13 @@
 # Awesome-Sparse-Models
-## Sparse Models in AI: History, Progression, Variants, & Applications
+![Awesome Sparse Models Banner](assets/banner.svg)
+
+## 🧠 Sparse Models in AI: History, Progression, Variants, & Applications
 
 A Sparse Model is an architectural paradigm in artificial intelligence designed to optimize computational efficiency, parameter storage, and memory bandwidth by enforcing sparsity across a network’s weights, activations, or routing pathways. In contrast to dense neural networks—where every parameter must be loaded and computed for every single data point—sparse models isolate and activate only a highly relevant subset of the parameter landscape per execution step. This approach transforms dense matrix operations into sparse tensor allocations, allowing specialized hardware compilers to bypass unnecessary zero-value floating-point operations (FLOPs). In the modern era of foundational AI, sparse modeling serves as a critical scaling engine, enabling networks to hold trillions of total parameters on disk while maintaining the inference speed and operational cost of a much smaller model.
 
 ---
 
-## 1. The Macro Chronological Evolution
+## 📈 1. The Macro Chronological Evolution
 
 The implementation of architectural sparsity has transitioned from static post-training weight elimination to automated layer pruning, moving toward modern data-dependent runtime gating matrices and structured sparse transformers.
 
@@ -17,7 +19,6 @@ flowchart LR
 ```
 
 | Era/Phase | Description | First Used Year | First Used Paper |
-| Era/Phase | Description | First Used Year | First Used Paper |
 | :--- | :--- | :--- | :--- |
 | [**The Static Weight Pruning Era (~2015–2020)**](details/static_weight_pruning.md) | *Concept:* The structural baseline. Sparsity was treated as an optimization layer applied entirely *after* dense training was complete [INDEX: 16]. Algorithms like magnitude-based pruning set lower-impact individual weights ($\vert w\vert < \epsilon$) across a dense layer to an absolute value of zero [INDEX: 16].<br/><br/>*Limitation:* Produced unstructured sparsity [INDEX: 16]. Standard silicon hardware (GPUs/CPUs) treats arbitrary, isolated zero coordinates as memory overhead rather than a computation shortcut, yielding zero real-world wall-clock speedups [INDEX: 16]. | 2015 | [Learning both Weights and Connections for Efficient Neural Networks](https://arxiv.org/abs/1506.02626) |
 | [**The Runtime Token-Routing Era (Mixture-of-Experts Boom, ~2021–2024)**](details/runtime_token_routing.md) | *Concept:* Shifted sparsity from static parameters to dynamic runtime paths. Popularized by architectures like **Switch Transformer**, **Mixtral**, and **DeepSeek-V3**, it introduced Mixture-of-Experts (MoE) modules. Instead of a single dense layer, a sparse layer splits its parameter capacity across multiple independent parallel sub-networks (Experts). A fast router network reads incoming tokens and dynamically maps them to only 1 or 2 specific experts.<br/><br/>*Significance:* Decoupled total parameter capacity from active token compute footprints. This allowed models to expand to hundreds of billions of total parameters on disk while keeping active inference FLOP costs strictly bounded [INDEX: 15]. | 2017 | [Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer](https://arxiv.org/abs/1701.06538) |
@@ -25,7 +26,7 @@ flowchart LR
 
 ---
 
-## 2. Core Functional & Architectural Variants
+## ⚙️ 2. Core Functional & Architectural Variants
 
 Sparse model configurations are strictly categorized based on whether the zero parameters are hardcoded permanently into the weights or dynamically gated at runtime.
 
@@ -38,7 +39,7 @@ Sparse model configurations are strictly categorized based on whether the zero p
 
 ---
 
-## 3. High-Capacity Architectural Component Types
+## 🎛️ 3. High-Capacity Architectural Component Types
 
 To route, compress, and accelerate sparse data fields smoothly, engineering stacks deploy specialized multi-path coordination layers.
 
@@ -50,7 +51,7 @@ To route, compress, and accelerate sparse data fields smoothly, engineering stac
 
 ---
 
-## 4. Production Engineering Challenges & Hardware Solutions
+## ⚠️ 4. Production Engineering Challenges & Hardware Solutions
 
 Translating theoretical sparse modeling gains onto standard silicon hardware topologies introduces severe memory, routing, and synchronization bottlenecks.
 
@@ -61,7 +62,7 @@ Translating theoretical sparse modeling gains onto standard silicon hardware top
 
 ---
 
-## 5. Frontier Real-World AI Infrastructure Applications
+## 🚀 5. Frontier Real-World AI Infrastructure Applications
 
 | Application | Description | First Used Year | First Used Paper |
 | :--- | :--- | :--- | :--- |
@@ -71,7 +72,7 @@ Translating theoretical sparse modeling gains onto standard silicon hardware top
 
 ---
 
-## References
+## 📚 References
 1. Shazeer, N., et al. (2017). Outrageously large neural networks: The sparsely-gated mixture-of-experts layer. *arXiv preprint arXiv:1701.06538*.
 2. Fedus, W., Zoph, B., & Shazeer, N. (2021). Switch transformers: Scaling to trillion parameter models with simple and efficient sparsity. *arXiv preprint arXiv:2101.03961*.
 3. Hoffmann, J., et al. (2022). Training compute-optimal large language models. *arXiv preprint arXiv:2203.15556*.
