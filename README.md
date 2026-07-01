@@ -9,7 +9,7 @@ A Sparse Model is an architectural paradigm in artificial intelligence designed 
 
 The implementation of architectural sparsity has transitioned from static post-training weight elimination to automated layer pruning, moving toward modern data-dependent runtime gating matrices and structured sparse transformers.
 
-```
+```mermaid
 [Static Post-Training Pruning (2015)] ───> [Dynamic Mixture-of-Experts (2021-2023)] ───> [Structured Sparse Topologies (2025-2026+)](Heuristic Matrix Weight Dropping)           (Token-Routing Gated Expert Blocks)            (Hardware-Fused Block-Diagonal Compression)
 ```
 
