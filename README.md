@@ -91,3 +91,16 @@ Translating theoretical sparse modeling gains onto standard silicon hardware top
 
 To advance this documentation repository, infrastructure workspace, or architectural blueprint, consider exploring these adjacent development pathways:
 * Build a **Python script using PyTorch and DeepSpeed** illustrating how to declare a sparsely routed Mixture-of-Experts (MoE) layer block configured with an auxiliary load-balancing loss.
+
+---
+
+##  Star History
+<div align="center">
+<a href="https://www.star-history.com/?repos=ishandutta2007%2FAwesome-Sparse-Models&type=date&legend=bottom-right">
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=ishandutta2007/Awesome-Sparse-Models&type=date&theme=dark&legend=bottom-right" />
+<source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=ishandutta2007/Awesome-Sparse-Models&type=date&legend=bottom-right" />
+<img alt="Star History Chart" src="https://api.star-history.com/chart?repos=ishandutta2007/Awesome-Sparse-Models&type=date&legend=bottom-right" />
+</picture>
+</a>
+</div>
